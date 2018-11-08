@@ -1,0 +1,19 @@
+size 0
+size 1
+[] apple 3
+get apple 3
+size 1
+get pie invalid_argument
+get banana 4
+get bananas invalid_argument
+[] banana 4
+[] banana 12
+get banana 12
+size 5
+insert radish 3
+get radish 3
+insert radish 4
+get radish 4
+[] radish 4
+get radish 5
+size 6

@@ -1,0 +1,26 @@
+size
+[] apple 3
+size
+[] apple
+get apple
+size
+get pie
+[] lettuce 1
+[] cabbage 5
+[] cucumber 3
+[] banana 4
+get banana
+get bananas
+[] banana
+[] banana 12
+[] banana
+get banana
+size
+insert radish 3
+get radish
+insert radish 4
+get radish
+[] radish
+[] radish 5
+get radish
+size
