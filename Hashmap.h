@@ -1,5 +1,8 @@
-// The only change you can make to this file is adding additional private methods
-// You are not required to add additional private methods, but you may if you wish
+// The only changes you can make to this file:
+//  1) Adding additional private methods
+//     You are not required to add additional private methods, but you may if you wish
+//  2) You can also change the BUCKETS value to see how it changes the distribution of keys
+//		 Choose between 1 and 1000. No need to go higher.
 #pragma once
 #include <stdexcept>
 #include <sstream>

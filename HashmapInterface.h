@@ -35,6 +35,9 @@ public:
 	 *   for the given key
 	 *  This will also allow you use sytnax such as map['pig']=10 to set/update
 	 *   the value for the given key
+	 *  If the node with the given key is found in the map, return that node's value
+	 *  If the ndoe with the given key is not found in the map, insert a new node with
+	 *   the given key and a value of 0 into the map, then return newNode->value
 	 */
 	virtual int& operator [](string key) = 0;
 
