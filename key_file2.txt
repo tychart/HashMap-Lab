@@ -1,0 +1,18 @@
+size 0
+insert apple 3
+size 1
+insert carrot 7
+size 2
+insert grapefruit 1
+size 3
+insert banana 8
+size 4
+contains apple true
+contains lettuce false
+contains carrot true
+contains grapefruit true
+contains cabbage false
+contains banana true
+contains cucumber false
+contains apples false
+size 4

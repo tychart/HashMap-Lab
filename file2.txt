@@ -1,0 +1,18 @@
+size
+insert apple 3
+size
+insert carrot 7
+size
+insert grapefruit 1
+size
+insert banana 8
+size
+contains apple
+contains lettuce
+contains carrot
+contains grapefruit
+contains cabbage
+contains banana
+contains cucumber
+contains apples
+size

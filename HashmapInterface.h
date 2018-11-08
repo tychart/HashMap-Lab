@@ -25,6 +25,7 @@ public:
 
 	/*
 	 * Return the value associated with the given key in the map
+	 *  Throw invalid_argument exception if key is not in map
 	 */
 	virtual int get(string key) const = 0;
 
@@ -59,27 +60,27 @@ public:
 	 *  [0]
 	 *
 	 *  A bucket with a single key/value pair should look like this:
-	 *  [0] "pig" => 10
-   *
-   *  And a bucket with multiple key/value pairs should look like this:
-	 *  [0] "pig" => 10, "moose" => 3
+	 *  [0] pig => 10
+	 *
+	 *  And a bucket with multiple key/value pairs should look like this:
+	 *  [0] pig => 10, moose => 3
 	 *
 	 *  Each bucket should be on one line. Buckets should be in numerical order
 	 *  starting at 0 and going up to BUCKETS-1. For example, if BUCKETS is 5
 	 *  the string might look like this:
 	 *  [0]
-	 *  [1] "rock" => 4, "bacon" => 17
-	 *  [2] "hippie" => 8
+	 *  [1] rock => 4, bacon => 17
+	 *  [2] hippie => 8
 	 *  [3]
-	 *  [4] "dagger" => 2, "wrench" => 1, "pipe" => 4
+	 *  [4] dagger => 2, wrench => 1, pipe => 4
 	 *
 	 *  There should be no trailing spaces or commas. Lines should end with single
 	 *  newline character \n
 	 */
-	virtual string toString() = 0;
+	virtual string toString() const = 0;
 
 	/*
 	 * Return number of keys in map
 	 */
-	virtual int size() = 0;
+	virtual int size() const = 0;
 };
