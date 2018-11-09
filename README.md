@@ -5,7 +5,7 @@ Implement your own map using a hash table, like the C++ STL unordered\_map class
 
 Every file you need is provided except Hashmap.cpp. You need to make Hashmap.cpp and implement the methods from Hashmap.h. You do not need to alter or add any other files, though you may choose to alter Hashmap.h in limited ways (such as adding additional private methods or changing the number of buckets used in your hash table).
 
-The hash table you build will use chaining. Your primary structure is an array of Node\* where each entry starts off as NULL. The preprocessor define BUCKETS defines the number of buckets (the capacity of the array). When a node is placed into an empty bucket, that node becomes the head of the linked list chain for that bucket. When a node is placed into a bucket containing one or more nodes, the new node is chained into the linked list. Each entry of the array is essentially a head pointer of a doubly-linked list. There is no tail pointer. Each node as a prev pointer and a next pointer.
+The hash table you build will use chaining. Your primary structure is an array of Node\* where each entry starts off as NULL. The preprocessor define BUCKETS defines the number of buckets (the capacity of the array). When a node is placed into an empty bucket, that node becomes the head of the linked list chain for that bucket. When a node is placed into a bucket containing one or more nodes, the new node is chained into the linked list. Each entry of the array is essentially a head pointer of a doubly-linked list. There is no tail pointer. Each node has a prev pointer and a next pointer.
 
 Each node in your hash table has both a key and a value. The key is a string and the value is an int. Keys must be unique, but more than one key can map to the same value. To determine which bucket a node should be placed into, use your hash function on the node's key. The return value (the hashcode) determines the index of your buckets array. Place the node into the linked list whose head is at buckets[hashcode].
 
@@ -101,15 +101,10 @@ File 3 also performs additional tests on insert and get to make sure that insert
 * An intense test of everything (except for toSortedString)
 * Intensive test of insert, get, contains, [] operator, remove, and clear
 
-## Valgrind - (15 pts)
-* No memory leaks at all
-* No memory definitely lost, possibly lost, or still accessible
-* Run "valgrind --leak-check=full ./lab9" to check with valgrind
-
-## WordCounter (toSortedString) - (20 pts)
+## File 6 - WordCounter and ToSortedString - (20 pts)
 * The WordCounter class is provided for you in its entirety
-* The WordCounter class reads a text file and uses a Hashmap to build a map from words to frequency
-* The WordCounter class toString method simply relies on the Hashmap toSortedString method
+* The WordCounter class reads a text file and uses your Hashmap class to build a map from words to their frequency
+* The WordCounter class toString method simply relies on the Hashmap toSortedString method, so that's all you need to do to get this test case to work
 
 ### ToSortedString
 * Create a priority queue to hold all of the Node pointers in your map
@@ -118,5 +113,11 @@ File 3 also performs additional tests on insert and get to make sure that insert
 * The second template parameter (vector\<Node\*\>) is the underlying datatype for the priority queue's heap
 * The third template parameter (NodeCompare) defines the comparison function used for sorting (see Hashmap.h struct NodeCompare)
 * Iterate through all of the buckets. For each bucket, iterate through the linked list. Push every Node\* onto the priority queue (nodeHeap)
-* While nodeHeap is not empty, add "key => value\n" to a stringstream for the top node (Don't forget to pop off the top)
+* While nodeHeap is not empty, add the top node's "key => value\n" to a stringstream (Don't forget to pop after using the top)
 * Return the stringstream as a string
+
+## Valgrind - (15 pts)
+* No memory leaks at all
+* No memory definitely lost, possibly lost, or still accessible
+* Run "valgrind --leak-check=full ./lab9" to check with valgrind
+* Don't always run tests with valgrind (some of these test cases process lots of data, so valgrind slows down the automated test cases considerably)
