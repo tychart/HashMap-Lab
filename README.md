@@ -101,7 +101,7 @@ File 3 also performs additional tests on insert and get to make sure that insert
 * An intense test of everything (except for toSortedString)
 * Intensive test of insert, get, contains, [] operator, remove, and clear
 
-## File 6 - WordCounter and ToSortedString - (20 pts)
+## File 6 - WordCounter and ToSortedString (20 pts)
 * The WordCounter class is provided for you in its entirety
 * The WordCounter class reads a text file and uses your Hashmap class to build a map from words to their frequency
 * The WordCounter class toString method simply relies on the Hashmap toSortedString method, so that's all you need to do to get this test case to work (assuming your contains, [] operator, and clear methods already work)
@@ -118,7 +118,7 @@ File 3 also performs additional tests on insert and get to make sure that insert
 * While nodeHeap is not empty, add the top node's "key => value\n" to a stringstream (Don't forget to pop after using the top)
 * Return the stringstream as a string
 
-## Valgrind - (15 pts)
+## Valgrind (15 pts)
 * No memory leaks at all
 * No memory definitely lost, possibly lost, or still accessible
 * Run "valgrind --leak-check=full ./lab9" to check with valgrind
