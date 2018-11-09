@@ -3,10 +3,11 @@
 #include <sstream>
 #include <stdexcept>
 #include "Hashmap.h"
+#include "WordCounter.h"
 
-const int NUM_FILES = 5; // the total number of files to be read from
+const int NUM_FILES = 6; // the total number of files to be read from
 
-const std::string fileArray[NUM_FILES] = { "file1.txt", "file2.txt", "file3.txt", "file4.txt", "file5.txt" }; // the string aray containing the file names
+const std::string fileArray[NUM_FILES] = { "file1.txt", "file2.txt", "file3.txt", "file4.txt", "file5.txt", "file6.txt" }; // the string aray containing the file names
 
  // This will take a string temp and a Hashmap object and will execute an instruction from the string
  // no return, but writes the results of the instruction into the ofs filestream
@@ -46,7 +47,7 @@ int main(int argc, char* argv[])
 				std::cout << "An exception was thrown that shouldn't have been.\n";
 			}
 		}
-		std::cout << map->toString() << std::endl;
+		std::cout << map->toString() << std::endl; // Print map contents at the end
 		std::cout << "File write complete" << std::endl << std::endl;
 		if(map != NULL) {
 			delete map;
@@ -57,90 +58,11 @@ int main(int argc, char* argv[])
 	}
 	std::cout << "end" << std::endl; // indicate that the program has successfuly executed all instructions
 	return 0;
-
-	// TODO DELETE ALL BELOW THIS
-/*
-	// Test insert and get
-	Hashmap map;
-	map.insert("hello", 1);
-	map.insert("bob", 3);
-	map.insert("hello", 7); // Should override
-	std::cout << map.get("hello") << std::endl;
-	std::cout << map.get("bob") << std::endl;
-	try {
-		std::cout << map.get("potato") << std::endl;
-	}catch(invalid_argument& ia) {
-		std::cout << "Invalid argument: " << ia.what() << std::endl;
-	}
-
-	// Test size
-	map.insert("jim", 3);
-	map.insert("sam", 8);
-	std::cout << map.size() << std::endl; // Should be 4
-
-	// Test contains
-	string words[5] = {"hello", "rock", "jim", "salt", "baker"};
-	for(int i = 0; i < 5; i++)
-	{
-		if(map.contains(words[i]))
-			std::cout << "map contains " << words[i] << std::endl;
-		else
-			std::cout << "map does not contain " << words[i] << std::endl;
-	}
-
-	// Test clear
-	map.clear();
-	map.insert("baker", 1);
-	std::cout << map.size() << std::endl; // Should be 1
-	for(int i = 0; i < 5; i++)
-	{
-		if(map.contains(words[i]))
-			std::cout << "map contains " << words[i] << std::endl;
-		else
-			std::cout << "map does not contain " << words[i] << std::endl;
-	}
-
-	// Test toString
-	map.insert("hello", 1);
-	map.insert("staff", 5);
-	map.insert("block", 2);
-	map.insert("rock", 8);
-	map.insert("gym", 9);
-	map.insert("pebble", 2);
-	map.insert("antimony", 3);
-	map.insert("cricket", 2);
-	map.insert("spoof", 4);
-	map.insert("bill", 2);
-	map.insert("rocket", 8);
-	map.insert("nest", 6);
-	map.insert("gullible", 5);
-	map.insert("starfish", 7);
-	map.insert("box", 9);
-	std::cout << map.toString() << std::endl;
-	std::cout << map.size() << std::endl; // Should be 16
-
-	// Test remove
-	map.remove("gym");
-	map.remove("nest");
-	map.remove("bill");
-	map.remove("piano");
-	std::cout << map.toString() << std::endl;
-	std::cout << map.size() << std::endl; // Should be 13
-
-	// Test [] operator
-	map["piano"] = 5; // New key
-	map["box"] = 10; // Overwrite value for existing key
-	std::cout << map.toString() << std::endl;
-	std::cout << map.size() << std::endl; // Should be 14
-
-	// Test toSortedString
-	std::cout << map.toSortedString() << std::endl;
-*/
 }
 
 void parse_instruction(std::string temp, std::ofstream &ofs, Hashmap* map)
 {
-	std::string command, key;
+	std::string command, key, file;
 	int value, size;
 	bool didWork;
 	std::stringstream ss(temp);
@@ -189,6 +111,14 @@ void parse_instruction(std::string temp, std::ofstream &ofs, Hashmap* map)
 	else if(command == "clear") { // command to clear all key/value pairs from map
 		map->clear();
 		ofs << temp << std::endl;
+	}
+	else if(command  == "WordCounter") { // command to run WordCounter on file
+		ss >> file;
+		WordCounter wc;
+		wc.loadFile(file);
+		ofs << temp << std::endl;
+		ofs << wc.toString() << std::endl;
+		wc.reset();
 	}
 	else { // invalid command, wrong input file format
 		std::cout << "Command: \"" << command << "\"" << std::endl;

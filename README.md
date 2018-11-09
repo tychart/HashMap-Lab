@@ -64,8 +64,21 @@ File 3 also performs additional tests on insert and get to make sure that insert
 * Intensive test of insert, get, contains, [] operator, remove, and clear
 
 ## Valgrind - (15 pts)
-* No memory leaks not all
+* No memory leaks at all
 * No memory definitely lost, possibly lost, or still accessible
 * Run "valgrind --leak-check=full ./lab9" to check with valgrind
 
-## Word Count (toSortedString) - (20 pts)
+## WordCounter (toSortedString) - (20 pts)
+* The WordCounter class is provided for you in its entirety
+* The WordCounter class reads a text file and uses a Hashmap to build a map from words to frequency
+* The WordCounter class toString method simply relies on the Hashmap toSortedString method
+
+### toSortedString
+* Create a priority queue to hold all of the Node pointers in your map
+* Use the following syntax: priority\_queue\<Node\*, vector\<Node\*\>, NodeCompare\> nodeHeap;
+* The first template parameter (Node\*) is the type of object that can be put into the priority queue
+* The second template parameter (vector\<Node\*\>) is the underlying datatype for the priority queue's heap
+* The third template parameter (NodeCompare) defines the comparison function used for sortying (see Hashmap.h struct NodeCompare)
+* Iterate through all of the buckets. For each bucket, iterate through the linked list. Push every Node\* onto the priority queue (nodeHeap)
+* While nodeHeap is not empty, add "key => value\n" to a stringstream for the top node (Don't forget to pop off the top)
+* Return the stringstream as a string
