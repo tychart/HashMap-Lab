@@ -4,6 +4,10 @@
 Implement your own map using a hash table, like the C++ STL unordered\_map class. The goal is to get your insert, find, and remove functions to have an average runtime of O(1).
 
 ## File 1 - Insert and Get (10 pts)
+### Constructor
+* Initialize buckets[i] = NULL for each i (0 <= i < BUCKETS)
+* Initialize size
+
 ### Insert
 * The insert function takes in 2 parameters: string key and int value
 * First, use your hash function to figure out which bucket (which index of your buckets array) the key belongs in
@@ -35,14 +39,33 @@ File 2 also performs additional tests on insert to make sure that your code can 
 * The operator [] function returns an int& to allow all of these operations
 * First, use your hash function to figure out which bucket the key belongs in
 * If you find the node with the matching key in the map, then return that node's value (this will allow the caller to both get and update the value)
-* If you do not find the node with the matching key in the map, insert a new node with a value of 0 into the appropriate bucket and return newNode-\>value
+* If you do not find the node with the matching key in the map, insert a new node with the given key and a value of 0 into the appropriate bucket and return newNode-\>value
 
 File 3 also performs additional tests on insert and get to make sure that insert can be used to overwrite values and that get will throw an invalid\_argument exception when the key isn't in the map. Also tests to make sure that multiple keys can be chained together in a single bucket.
 
 ## File 4 - Remove and Clear (20 pts)
+### Remove
+* The remove function takes in 1 paramter: string key
+* Return true if key is found and removed, false otherwise
+* Use the hash function to find which bucket to look into, then iterate through that bucket's linked list to find the node with the given key
+* If the node isn't found, return false
+* If the node is found, remove the node from the linked list (make sure to update buckets[hashcode] to point to the new head if the head is removed)
+* Make sure to update all pointers (you can refer to your LinkedList lab code) and delete the removed node to deallocate memory
+* Decrement size and return true
+
+### Clear
+* Iterate through all buckets
+* For each bucket that is not null, iterate through the bucket's linked list and delete all the nodes
+* Reset all buckets to null
+* Reset size to 0
 
 ## File 5 - Everything Combined (10 pts)
+* An intense test of everything (except for toSortedString)
+* Intensive test of insert, get, contains, [] operator, remove, and clear
 
 ## Valgrind - (15 pts)
+* No memory leaks not all
+* No memory definitely lost, possibly lost, or still accessible
+* Run "valgrind --leak-check=full ./lab9" to check with valgrind
 
 ## Word Count (toSortedString) - (20 pts)

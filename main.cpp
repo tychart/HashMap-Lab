@@ -4,9 +4,9 @@
 #include <stdexcept>
 #include "Hashmap.h"
 
-const int NUM_FILES = 3; // the total number of files to be read from
+const int NUM_FILES = 5; // the total number of files to be read from
 
-const std::string fileArray[NUM_FILES] = { "file1.txt", "file2.txt", "file3.txt" }; // the string aray containing the file names
+const std::string fileArray[NUM_FILES] = { "file1.txt", "file2.txt", "file3.txt", "file4.txt", "file5.txt" }; // the string aray containing the file names
 
  // This will take a string temp and a Hashmap object and will execute an instruction from the string
  // no return, but writes the results of the instruction into the ofs filestream
@@ -142,7 +142,7 @@ void parse_instruction(std::string temp, std::ofstream &ofs, Hashmap* map)
 {
 	std::string command, key;
 	int value, size;
-	bool contains;
+	bool didWork;
 	std::stringstream ss(temp);
 	if (!(ss >> command)) { return; } // get command, but if string was empty, return
 	if (command == "insert") { // command to insert key/value pair
@@ -166,8 +166,8 @@ void parse_instruction(std::string temp, std::ofstream &ofs, Hashmap* map)
 	}
 	else if (command == "contains") { // command to test if key exist in map
 		ss >> key;
-		contains = map->contains(key);
-		ofs << temp << " " << (contains ? "true" : "false") << std::endl;
+		didWork = map->contains(key);
+		ofs << temp << " " << (didWork ? "true" : "false") << std::endl;
 	}
 	else if (command == "[]") { // command to override [] operator
 		ss >> key;
@@ -178,8 +178,17 @@ void parse_instruction(std::string temp, std::ofstream &ofs, Hashmap* map)
 		else // if value is not provided, get value
 		{
 			value = (*map)[key];
-			ofs << temp << " " << value << std::endl;
 		}
+		ofs << temp << std::endl;
+	}
+	else if(command == "remove") { // command to remove key/value pair by key
+		ss >> key;
+		didWork = map->remove(key);
+		ofs << temp << " " << (didWork ? "true" : "false") << std::endl;
+	}
+	else if(command == "clear") { // command to clear all key/value pairs from map
+		map->clear();
+		ofs << temp << std::endl;
 	}
 	else { // invalid command, wrong input file format
 		std::cout << "Command: \"" << command << "\"" << std::endl;
