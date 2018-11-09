@@ -104,7 +104,7 @@ File 3 also performs additional tests on insert and get to make sure that insert
 ## File 6 - WordCounter and ToSortedString - (20 pts)
 * The WordCounter class is provided for you in its entirety
 * The WordCounter class reads a text file and uses your Hashmap class to build a map from words to their frequency
-* The WordCounter class toString method simply relies on the Hashmap toSortedString method, so that's all you need to do to get this test case to work
+* The WordCounter class toString method simply relies on the Hashmap toSortedString method, so that's all you need to do to get this test case to work (assuming your contains, [] operator, and clear methods already work)
 
 ### ToSortedString
 * Create a priority queue to hold all of the Node pointers in your map
