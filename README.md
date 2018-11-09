@@ -11,29 +11,29 @@ Each node in your hash table has both a key and a value. The key is a string and
 
 Your hash table may look something like this once values are put into it:
 
-[0] Aylesbury => 1, Azikiwe => 1, azimuth => 1, azimuthally => 1
-[1] Azerbaijan => 1, azure => 1
-[2] Ayrshires => 1, Azeris => 1
-[3] azimuths => 1, Aztec => 1
-[4] Ayckbourn => 1, ayes => 1, Azerbaijans => 1
-[5] Ayckbourns => 1, Ayrs => 1
-[6] Ayers => 1, Azov => 1, Aztecan => 1, azures => 1
-[7] Aylesburys => 1, Ayrshire => 1, azaleas => 1, Azikiwes => 1
-[8] Azores => 1, Aztecs => 1
-[9] aye => 1, azimuthal => 1, Azizs => 1
+* [0] Aylesbury => 1, Azikiwe => 1, azimuth => 1, azimuthally => 1
+* [1] Azerbaijan => 1, azure => 1
+* [2] Ayrshires => 1, Azeris => 1
+* [3] azimuths => 1, Aztec => 1
+* [4] Ayckbourn => 1, ayes => 1, Azerbaijans => 1
+* [5] Ayckbourns => 1, Ayrs => 1
+* [6] Ayers => 1, Azov => 1, Aztecan => 1, azures => 1
+* [7] Aylesburys => 1, Ayrshire => 1, azaleas => 1, Azikiwes => 1
+* [8] Azores => 1, Aztecs => 1
+* [9] aye => 1, azimuthal => 1, Azizs => 1
 
 In this case, all nodes have a value of 1 but each has a unique key. There are 10 buckets. The hash function distributed the nodes fairly evenly across the buckets. If your hash table looks more like this:
 
-[0] Aylesbury => 1, Azikiwe => 1, azimuth => 1, azimuthally => 1, Azerbaijan => 1, azure => 1
-[1]
-[2] Ayrshires => 1, Azeris => 1, azimuths => 1, Aztec => 1, Ayckbourn => 1, ayes => 1, Azerbaijans => 1
-[3]
-[4]
-[5]
-[6]
-[7]
-[8] Azores => 1, Aztecs => 1, Ayers => 1, Azov => 1, Aztecan => 1, azures => 1, aye => 1, azimuthal => 1, Azizs => 1
-[9] Ayckbourns => 1, Ayrs => 1, Aylesburys => 1, Ayrshire => 1, azaleas => 1, Azikiwes => 1
+* [0] Aylesbury => 1, Azikiwe => 1, azimuth => 1, azimuthally => 1, Azerbaijan => 1, azure => 1
+* [1]
+* [2] Ayrshires => 1, Azeris => 1, azimuths => 1, Aztec => 1, Ayckbourn => 1, ayes => 1, Azerbaijans => 1
+* [3]
+* [4]
+* [5]
+* [6]
+* [7]
+* [8] Azores => 1, Aztecs => 1, Ayers => 1, Azov => 1, Aztecan => 1, azures => 1, aye => 1, azimuthal => 1, Azizs => 1
+* [9] Ayckbourns => 1, Ayrs => 1, Aylesburys => 1, Ayrshire => 1, azaleas => 1, Azikiwes => 1
 
 Then you may need to modify your hash function so that it distributes the keys more uniformly over the buckets. You might consider googling "good hash functions for strings" or combing through class readings to get some ideas of how to improve your hash function.
 
