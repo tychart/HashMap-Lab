@@ -107,6 +107,8 @@ File 3 also performs additional tests on insert and get to make sure that insert
 * The WordCounter class toString method simply relies on the Hashmap toSortedString method, so that's all you need to do to get this test case to work (assuming your contains, [] operator, and clear methods already work)
 
 ### ToSortedString
+* Hashmaps are unordered by nature, so you have to use a different data structure to sort your data
+* For this lab, perform heapsort using a priority queue
 * Create a priority queue to hold all of the Node pointers in your map
 * Use the following syntax: priority\_queue\<Node\*, vector\<Node\*\>, NodeCompare\> nodeHeap;
 * The first template parameter (Node\*) is the type of object that can be put into the priority queue
