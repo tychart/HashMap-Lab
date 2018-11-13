@@ -120,6 +120,6 @@ File 3 also performs additional tests on insert and get to make sure that insert
 
 ## Valgrind (15 pts)
 * No memory leaks at all
-* No memory definitely lost, possibly lost, or still accessible
+* No memory definitely lost, directly lost, indirectly lost, or possibly lost.
 * Run "valgrind --leak-check=full ./lab9" to check with valgrind
 * Don't always run tests with valgrind (some of these test cases process lots of data, so valgrind slows down the automated test cases considerably)
