@@ -48,7 +48,7 @@ Then you may need to modify your hash function so that it distributes the keys m
 * Remember that buckets[hashcode] is a Node pointer that represents the head of your doubly-linked list for that bucket
 * Iterate through all of the nodes in the list at buckets[hashcode] to see if the insert key is already in the map
 * If you find a node with the input key already in the map, update that node's value to the new input value
-* If you do not find a node with the value, create a new node and insert it into the doubly linked list at buckets[hashcode]
+* If you do not find a node with the input key, create a new node with the given key and value and insert the new node into the doubly linked list at buckets[hashcode]
 
 ### Get
 * The get function takes in 1 parameter: string key
@@ -83,7 +83,7 @@ File 3 also performs additional tests on insert and get to make sure that insert
 
 ## File 4 - Remove and Clear (20 pts)
 ### Remove
-* The remove function takes in 1 paramter: string key
+* The remove function takes in 1 parameter: string key
 * Return true if key is found and removed, false otherwise
 * Use the hash function to find which bucket to look into, then iterate through that bucket's linked list to find the node with the given key
 * If the node isn't found, return false
