@@ -118,6 +118,25 @@ File 3 also performs additional tests on insert and get to make sure that insert
 * While nodeHeap is not empty, add the top node's "key => value\n" to a stringstream (Don't forget to pop after using the top)
 * Return the stringstream as a string
 
+```C++
+string Hashmap::toSortedString() const
+{
+  stringstream ss;
+  priority_queue<Node*, vector<Node*>, NodeCompare> nodeHeap;
+  for(int i = 0; i < BUCKETS; i++)
+  {
+    // Iterate through each bucket. Use nodeHeap.push to push all Node* onto heap.
+  }
+  while(!nodeHeap.empty())
+  {
+    Node* top = nodeHeap.top(); // Get top node (next node in sorted order)
+    ss << top->key << " => " << top->value << endl; // Add node data to stringstream
+    nodeHeap.pop(); // Pop it off
+  }
+  return ss.str();
+}
+```
+
 ## Valgrind (15 pts)
 * No memory leaks at all
 * No memory definitely lost, directly lost, indirectly lost, or possibly lost.
