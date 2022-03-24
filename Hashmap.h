@@ -24,7 +24,6 @@ private:
 	{
 		string key;
 		int value;
-		Node* prev;
 		Node* next;
 	};
 
