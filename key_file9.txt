@@ -1,0 +1,25 @@
+--- Test 9 output ---
+
+Reading in words.txt
+
+500 words into the dictionary, map.size() = 500 and map has 640 buckets
+1000 words into the dictionary, map.size() = 1000 and map has 1280 buckets
+1500 words into the dictionary, map.size() = 1500 and map has 2560 buckets
+2000 words into the dictionary, map.size() = 2000 and map has 2560 buckets
+2500 words into the dictionary, map.size() = 2500 and map has 5120 buckets
+3000 words into the dictionary, map.size() = 3000 and map has 5120 buckets
+3500 words into the dictionary, map.size() = 3500 and map has 5120 buckets
+4000 words into the dictionary, map.size() = 4000 and map has 5120 buckets
+4500 words into the dictionary, map.size() = 4500 and map has 10240 buckets
+5000 words into the dictionary, map.size() = 5000 and map has 10240 buckets
+
+After having removed 500 words from the dictionary, map.size() = 4500
+After having removed 1000 words from the dictionary, map.size() = 4000
+After having removed 1500 words from the dictionary, map.size() = 3500
+After having removed 2000 words from the dictionary, map.size() = 3000
+After having removed 2500 words from the dictionary, map.size() = 2500
+After having removed 3000 words from the dictionary, map.size() = 2000
+After having removed 3500 words from the dictionary, map.size() = 1500
+After having removed 4000 words from the dictionary, map.size() = 1000
+After having removed 4500 words from the dictionary, map.size() = 500
+After having removed 5000 words from the dictionary, map.size() = 0
