@@ -41,7 +41,7 @@ public:
      *  If the node with the given key is not found in the map, insert a new node with
      *   the given key and a value of 0 into the map, then return newNode->value
      */
-    virtual int &operator[](std::string key) = 0;
+    virtual int &operator[](const std::string &key) = 0;
 
     /*
      * Remove the node with given key from the map

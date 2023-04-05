@@ -13,39 +13,39 @@ public:
         // implement your constructor here
     }
 
-    ~Hashmap() {
+    ~Hashmap() override {
         // implement your destructor here
     }
 
-    void insert(std::string key, int value) {
+    void insert(std::string key, int value) override {
         // implement insert here
     }
 
-    bool contains(const std::string &key) const {
+    bool contains(const std::string &key) const override {
         // implement contains here
     }
 
-    int get(const std::string &key) const {
+    int get(const std::string &key) const override {
         // implement get here
     }
 
-    int &operator[](std::string key) {
+    int &operator[](const std::string& key) override {
         // implement operator[] here
     }
 
-    bool remove(const std::string &key) {
+    bool remove(const std::string &key) override {
         // implement remove here
     }
 
-    void clear() {
+    void clear() override {
         // implement clear here
     }
 
-    std::string toString() const {
+    std::string toString() const override {
         // implement toString here
     }
 
-    int size() const {
+    int size() const override {
         // implement size here
     }
 };
