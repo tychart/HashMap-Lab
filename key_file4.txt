@@ -1,98 +1,22 @@
-size 0
-[] Aachen 1
-[] Aachens 1
-[] aardvark 1
-[] aardvarks 1
-[] aardvarks 1
-[] Aarhus 1
-[] Aarhuss 1
-[] Aaron 1
-[] Aarons 1
-[] Aaronvitch 1
-[] Aaronvitchs 1
-[] Ababa 1
-[] Ababas 1
-[] aback 1
-[] abacus 1
-[] abacuses 1
-[] abacuss 1
-[] abaft 1
-[] abalone 1
-[] abalones 1
-[] abalones 1
-[] abandon 1
-[] abandoned 1
-[] abandoner 1
-size 22
-contains Aaron true
-remove Aaron true
-size 21
-remove abacus true
-size 20
-remove zelda false
-size 20
-contains abacus false
-contains abaft true
-contains zelda false
-contains Aaron false
-clear
-size 0
-contains Aachen false
-contains Aaron false
-[] Ayckbourn 1
-[] Ayckbourns 1
-[] aye 1
-[] Ayers 1
-[] ayes 1
-[] ayes 1
-[] Aylesbury 1
-[] Aylesburys 1
-[] Ayr 1
-[] Ayrs 1
-[] Ayrshire 1
-[] Ayrshires 1
-[] azalea 1
-[] azaleas 1
-[] azaleas 1
-[] Azerbaijan 1
-[] Azerbaijans 1
-[] Azeri 1
-[] Azeris 1
-[] Azikiwe 1
-[] Azikiwes 1
-[] azimuth 1
-[] azimuthal 1
-[] azimuthally 1
-[] azimuths 1
-[] azimuths 1
-[] Aziz 1
-[] Azizs 1
-[] Azores 1
-[] Azov 1
-[] Aztec 1
-[] Aztecan 1
-[] Aztecs 1
-[] azure 1
-[] azures 1
-size 32
-remove Aziz true
-size 31
-remove Ayr true
-size 30
-remove Azeri true
-size 29
-contains azalea true
-remove bob false
-remove slob false
-remove rob false
-remove mob false
-remove dob false
-remove asov false
-remove azalea true
-remove cheese false
-contains Azov true
-contains Aziz false
-contains Ayr false
-contains Azeri false
-contains Aaron false
-contains azalea false
+--- Test 4 output ---
+
+Setting map["dog"] to 1...
+Setting map["cat"] to 1...
+Setting map["horse"] to 1...
+Setting map["cow"] to 1...
+Setting map["sheep"] to 1...
+Setting map["pig"] to 1...
+
+map.remove("cat") = true
+map.remove("sheep") = true
+map.remove("octopus") = false
+map.remove("wolf") = false
+
+map.get("dog") = 1
+map.get("cat") threw an invalid_argument exception
+map.get("horse") = 1
+map.get("cow") = 1
+map.get("sheep") threw an invalid_argument exception
+map.get("pig") = 1
+map.get("octopus") threw an invalid_argument exception
+map.get("wolf") threw an invalid_argument exception

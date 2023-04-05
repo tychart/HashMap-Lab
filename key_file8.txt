@@ -1,0 +1,24 @@
+--- Test 8 output ---
+
+Reading in 1Nephi.txt
+
+10000 characters into 1Nephi.txt, map has 434 distinct words distributed among 640 buckets
+20000 characters into 1Nephi.txt, map has 630 distinct words distributed among 1280 buckets
+30000 characters into 1Nephi.txt, map has 767 distinct words distributed among 1280 buckets
+40000 characters into 1Nephi.txt, map has 904 distinct words distributed among 1280 buckets
+50000 characters into 1Nephi.txt, map has 1035 distinct words distributed among 2560 buckets
+60000 characters into 1Nephi.txt, map has 1128 distinct words distributed among 2560 buckets
+70000 characters into 1Nephi.txt, map has 1201 distinct words distributed among 2560 buckets
+80000 characters into 1Nephi.txt, map has 1277 distinct words distributed among 2560 buckets
+90000 characters into 1Nephi.txt, map has 1390 distinct words distributed among 2560 buckets
+100000 characters into 1Nephi.txt, map has 1482 distinct words distributed among 2560 buckets
+110000 characters into 1Nephi.txt, map has 1573 distinct words distributed among 2560 buckets
+120000 characters into 1Nephi.txt, map has 1718 distinct words distributed among 2560 buckets
+130000 characters into 1Nephi.txt, map has 1795 distinct words distributed among 2560 buckets
+After having read 1Nephi.txt, map has 1799 distinct words distributed among 2560 buckets
+
+map.get("Nephi") = 74
+map.get("Israel") = 65
+map.get("behold") = 87
+map.get("I") = 575
+map.get("the") = 1997

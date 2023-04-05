@@ -1,14 +1,18 @@
-size 0
-insert apple 3
-size 1
-insert carrot 7
-size 2
-insert grapefruit 1
-size 3
-insert banana 8
-size 4
-get apple 3
-get carrot 7
-get grapefruit 1
-get banana 8
-size 4
+--- Test 1 output ---
+
+map.get("apple") threw an invalid_argument exception
+map.get("orange") threw an invalid_argument exception
+map.get("banana") threw an invalid_argument exception
+map.get("blueberry") threw an invalid_argument exception
+
+Inserting ("apple", 3) into map...
+Inserting ("orange", 5) into map...
+Inserting ("banana", 11) into map...
+
+map.get("apple") = 3
+map.get("orange") = 5
+map.get("banana") = 11
+map.get("blueberry") threw an invalid_argument exception
+
+Inserting ("apple", 4) into map...
+map.get("apple") = 4
