@@ -441,6 +441,18 @@ void test9() {
     }
     std::cout << std::endl;
 
+    bool found_missing_word = false;
+    for (const std::string &word: dictionary) {
+        if (!map.contains(word)) {
+            found_missing_word = true;
+            std::cout << "ERROR: expected " << word << " to be in the dictionary, but map.contains(\"" << word
+                      << "\") returned false" << std::endl;
+        }
+    }
+    if (found_missing_word) {
+        std::cout << std::endl;
+    }
+
     int words_removed = 0;
     for (const std::string &word: dictionary) {
         ++words_removed;
