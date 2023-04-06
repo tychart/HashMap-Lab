@@ -7,17 +7,7 @@
 #include "HashmapInterface.h"
 
 int count_buckets(const Hashmap &map) {
-    int buckets = 0;
-    bool maybe_bucket = true;
-    for (char ch: map.toString()) {
-        if (ch == '[' && maybe_bucket) {
-            ++buckets;
-            maybe_bucket = false;
-            continue;
-        }
-        maybe_bucket = ch == '\n';
-    }
-    return buckets;
+    return map.numBuckets();
 }
 
 void test_get(const Hashmap &map, const std::string &key) {

@@ -56,32 +56,15 @@ public:
     virtual void clear() = 0;
 
     /*
-     * Return string representation of map
-     *  Each row of the string representation should represent a list of key/values
-     *  in a single bucket.
+     * Return the size of the internal hash table. 
+     * 
+     * This is not the number of items in the map,
+     * but is the length of the array used as the hash table.
      *
-     *  An empty bucket should look like this:
-     *  [0]
-     *
-     *  A bucket with a single key/value pair should look like this:
-     *  [0] pig => 10
-     *
-     *  And a bucket with multiple key/value pairs should look like this:
-     *  [0] pig => 10, moose => 3
-     *
-     *  Each bucket should be on one line. Buckets should be in numerical order
-     *  starting at 0 and going up to BUCKETS-1. For example, if BUCKETS is 5
-     *  the string might look like this:
-     *  [0]
-     *  [1] rock => 4, bacon => 17
-     *  [2] hippie => 8
-     *  [3]
-     *  [4] dagger => 2, wrench => 1, pipe => 4
-     *
-     *  There should be no trailing spaces or commas. Lines should end with single
-     *  newline character \n
+     * Normally you would not expose this information (the number of buckets being used)
+     * in a public interface, but this information is needed for the project tests.
      */
-    virtual std::string toString() const = 0;
+    virtual int numBuckets() const = 0;
 
     /*
      * Return number of keys in map

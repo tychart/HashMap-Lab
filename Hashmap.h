@@ -40,9 +40,9 @@ public:
     void clear() override {
         // implement clear here
     }
-
-    std::string toString() const override {
-        // implement toString here
+    
+    int numBuckets() const override {
+        // implement numBuckets here
     }
 
     int size() const override {
