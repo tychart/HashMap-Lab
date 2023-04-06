@@ -6,7 +6,7 @@ Implement your own map using a hash table, like the C++ STL unordered_map class.
 
 Implement your hashmap in `Hashmap.h` (you are welcome to write a `Hashmap.cpp` if you prefer). Your hashmap will use keys of type `string` and values of type `int`.
 
-The hash table you build should use chaining. You can use whatever chaining implementation you prefer (build your own linked list, use `list` from the STL, etc). 
+You are welcome to use whatever collision-resolution strategy you prefer and implement that strategy any way you like (you just can't use `map` or `unordered_map`).
 
 You should start your hash table capacity at 10 and double it each time you grow. You should use a load factor of 0.8. Constants for these values are found in `HashmapInterface.h`.
 
