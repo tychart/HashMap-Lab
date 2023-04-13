@@ -135,7 +135,7 @@ public:
     }
 
     void clear() override {
-        for (auto i : mainMap) {
+        for (auto &i : mainMap) {
             i.clear();
         }
         currSize = 0;
