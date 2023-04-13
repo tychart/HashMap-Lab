@@ -7,13 +7,12 @@
 #include "HashmapInterface.h"
 #include "Pair.h"
 
-using std::vector, std::list, std::string;
+using std::vector, std::list, std::string, std::cout, std::endl;
 
 class Hashmap : public HashmapInterface {
 private:
-    // put any private data members or methods here
-
-    size_t currSize = INITIAL_BUCKETS;
+    size_t bucketAmmount = INITIAL_BUCKETS;
+    size_t currSize = 0;
     vector<list<Pair>> mainMap;
 
     // https://stackoverflow.com/questions/98153/whats-the-best-hashing-algorithm-to-use-on-a-stl-string-when-using-hash-map
@@ -23,7 +22,29 @@ private:
         while (*s) {
             hash = hash * 101  +  *s++;
         }
-        return hash % currSize;
+//        cout << "Returning: " << hash % currSize << endl;
+        return hash % bucketAmmount;
+    }
+
+    void maybeGrow() {
+        int temp = bucketAmmount * MAX_LOAD_FACTOR;
+        if (currSize > bucketAmmount * MAX_LOAD_FACTOR) {
+            grow();
+        }
+    }
+
+    void grow() {
+        bucketAmmount *= GROW_FACTOR;
+        vector<list<Pair>> tempMainMap = vector<list<Pair>>(bucketAmmount);
+
+        for (auto i : mainMap) {
+            for (auto &j: i) {
+                size_t pos = getHashedPos(j.key);
+                tempMainMap[pos].push_back(Pair(j.key, j.val));
+            }
+        }
+        mainMap = tempMainMap;
+
     }
 
 
@@ -31,41 +52,82 @@ private:
 public:
     Hashmap() {
         // implement your constructor here
-        mainMap = vector<list<int>>(10);
+        mainMap = vector<list<Pair>>(10);
 
     }
 
     ~Hashmap() override {
         // implement your destructor here
-        clear();
+//        clear();
     }
 
+
+
     void insert(std::string key, int value) override {
+        maybeGrow();
+        _insert(mainMap, key, value);
+    }
+
+    void _insert(vector<list<Pair>> &currMap, string key, int value) {
+
         size_t pos = getHashedPos(key);
-        auto it = mainMap[pos].begin();
-        for (auto const &i : mainMap[pos]) {
-            if (i == value) {
-                return; //
+//        auto it = currMap[pos].begin();
+        for (auto &i : currMap[pos]) {
+            if (i.key == key) {
+                i.key = key;
+                i.val = value;
+                return;
             }
         }
-        mainMap[pos].push_back(value);
-
+        currMap[pos].push_back(Pair(key, value));
+        currSize++;
     }
 
     bool contains(const std::string &key) const override {
-        // implement contains here
+        size_t pos = getHashedPos(key);
+//        auto it = mainMap[pos].begin();
+        for (auto &i : mainMap[pos]) {
+            if (i.key == key) {
+                return true;
+            }
+        }
+        return false;
     }
 
     int get(const std::string &key) const override {
-        // implement get here
+
+        size_t pos = getHashedPos(key);
+//        auto it = mainMap[pos].begin();
+        for (auto &i : mainMap[pos]) {
+            if (i.key == key) {
+                return i.val;
+            }
+        }
+        throw std::invalid_argument("Invalid syntax.");
+
     }
 
     int &operator[](const std::string& key) override {
-        // implement operator[] here
+        size_t pos = getHashedPos(key);
+//        auto it = mainMap[pos].begin();
+        for (auto &i : mainMap[pos]) {
+            if (i.key == key) {
+                return i.val;
+            }
+        }
+        throw std::invalid_argument("Invalid syntax.");
     }
 
     bool remove(const std::string &key) override {
-        // implement remove here
+        size_t pos = getHashedPos(key);
+        list<Pair>::iterator it = mainMap[pos].begin();
+        while (it != mainMap[pos].end()) {
+            if (it->key == key) {
+                mainMap[pos].erase(it);
+                return true;
+            }
+        }
+        return false;
     }
 
     void clear() override {
@@ -73,11 +135,24 @@ public:
     }
     
     int numBuckets() const override {
-        // implement numBuckets here
+        return bucketAmmount;
     }
 
     int size() const override {
-        // implement size here
+        return currSize;
     }
+
+    void print() {
+        int counter = 0;
+        for (auto i : mainMap) {
+            cout << "Slot " << counter << ": ";
+            for (auto &j: i) {
+               cout << "[" << j.key << ", " << j.val << "]";
+            }
+            cout << endl;
+            counter++;
+        }
+    }
+
 };
 

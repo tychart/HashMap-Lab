@@ -9,6 +9,14 @@
 struct Pair {
     std::string key;
     int val;
+
+    Pair(Pair const &pair) {
+        key = pair.key;
+        val = pair.val;
+    }
+
+
+
     Pair(std::string k, int v) {
         key = k;
         val = v;
