@@ -127,6 +127,7 @@ public:
                 mainMap[pos].erase(it);
                 return true;
             }
+            it++;
         }
         return false;
     }

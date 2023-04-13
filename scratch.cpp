@@ -36,6 +36,7 @@ int main() {
     temp = 7;
 
     map["deers"] = 7;
+    map.remove("deers");
     map["deers"] = 9;
 
     map.print();
