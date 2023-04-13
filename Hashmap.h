@@ -3,7 +3,10 @@
 #include <string>
 #include <vector>
 #include <list>
+
 #include "HashmapInterface.h"
+#include "Pair.h"
+
 using std::vector, std::list, std::string;
 
 class Hashmap : public HashmapInterface {
@@ -11,7 +14,7 @@ private:
     // put any private data members or methods here
 
     size_t currSize = INITIAL_BUCKETS;
-    vector<list<int>> mainMap;
+    vector<list<Pair>> mainMap;
 
     // https://stackoverflow.com/questions/98153/whats-the-best-hashing-algorithm-to-use-on-a-stl-string-when-using-hash-map
     size_t getHashedPos(const string &str, size_t seed = 0) const {
