@@ -28,7 +28,7 @@ private:
 
     void maybeGrow() {
         int temp = bucketAmmount * MAX_LOAD_FACTOR;
-        if (currSize > bucketAmmount * MAX_LOAD_FACTOR) {
+        if (currSize >= bucketAmmount * MAX_LOAD_FACTOR) {
             grow();
         }
     }
@@ -57,8 +57,7 @@ public:
     }
 
     ~Hashmap() override {
-        // implement your destructor here
-//        clear();
+        clear();
     }
 
 
@@ -108,6 +107,7 @@ public:
     }
 
     int &operator[](const std::string& key) override {
+        maybeGrow();
         size_t pos = getHashedPos(key);
 //        auto it = mainMap[pos].begin();
         for (auto &i : mainMap[pos]) {
@@ -116,6 +116,7 @@ public:
             }
         }
         mainMap[pos].push_back(Pair(key, 0));
+        currSize++;
         return mainMap[pos].back().val;
     }
 
@@ -125,6 +126,7 @@ public:
         while (it != mainMap[pos].end()) {
             if (it->key == key) {
                 mainMap[pos].erase(it);
+                currSize--;
                 return true;
             }
             it++;
@@ -133,7 +135,10 @@ public:
     }
 
     void clear() override {
-        // implement clear here
+        for (auto i : mainMap) {
+            i.clear();
+        }
+        currSize = 0;
     }
     
     int numBuckets() const override {
