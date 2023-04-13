@@ -32,8 +32,15 @@ int main() {
     cout << map["life"] << endl;
     map.print();
 
-    map.remove("cat");
+    int temp = map["deer"];
+    temp = 7;
+
+    map["deers"] = 7;
+    map["deers"] = 9;
 
     map.print();
+
+
+    cout << "Goodbye World!" << endl;
     return 0;
 }

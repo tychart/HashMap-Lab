@@ -115,7 +115,8 @@ public:
                 return i.val;
             }
         }
-        throw std::invalid_argument("Invalid syntax.");
+        mainMap[pos].push_back(Pair(key, 0));
+        return mainMap[pos].back().val;
     }
 
     bool remove(const std::string &key) override {
